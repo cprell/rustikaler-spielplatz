@@ -1,3 +1,5 @@
+mod refactored_rectangle;
+
 struct Person {
     last_name: String,
     first_name: String,
@@ -93,6 +95,8 @@ fn main() {
     };
 
     dbg!(&new_rect);
+
+    refactored_rectangle::refactored_rectangle();
 }
 
 fn build_person(last_name: String, first_name: String) -> Person {
