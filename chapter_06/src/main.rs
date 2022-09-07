@@ -141,6 +141,30 @@ fn main() {
     } else {
         // ...
     }
+
+    // Shorter:
+    let config_max = Some(3u8);
+    if let Some(max) = config_max {
+        println!("The maximum is configured to be {}", max);
+    }
+
+    // If you have a situation in which your program has logic that is too verbose to express using a match, remember that if let is in your Rust toolbox as well.
+    // example with else
+
+    let mut count = 0;
+    if let Coin::Quarter(state) = coin {
+        println!("State quarter from {:?}!", state);
+    } else {
+        count += 1;
+    }
+
+    // this is the same as
+
+    let mut count = 0;
+    match coin {
+        Coin::Quarter(state) => println!("State quarter from {:?}!", state),
+        _ => count += 1,
+    }
 }
 
 fn route(ip_kind: IpAddrKind) {}
