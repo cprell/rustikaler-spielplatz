@@ -1,3 +1,14 @@
+// nested paths
+// instead of this:
+// use std::cmp::Ordering;
+// use std::io;
+
+// you can do this:
+// use std::{cmp::Ordering, io};
+
+// also possible
+// global operator
+// use std::collections::*;
 mod front_of_house {
     pub mod hosting {
         pub fn add_to_waitlist() {}
@@ -5,6 +16,57 @@ mod front_of_house {
         fn test() {}
     }
 }
+
+// this is done instead of ::hosting::add_to_waitlist, so you know where the function is defined
+use crate::front_of_house::hosting;
+
+// alternative: this is called re-exporting. makes things public
+// pub use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant2() {
+    hosting::add_to_waitlist();
+}
+
+use rand::Rng;
+
+fn rand() {
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+}
+
+// when bringing in structs, enums with use, you do this
+
+use std::collections::HashMap;
+
+fn test() {
+    let mut map = HashMap::new();
+    map.insert(1, 2);
+}
+
+// when bringing in two items with the same name
+
+use std::fmt;
+use std::io;
+
+// fn function1() -> fmt::Result {
+// --snip--
+// }
+
+// fn function2() -> io::Result<()> {
+// --snip--
+// }
+
+// or:
+
+use std::fmt::Result;
+use std::io::Result as IoResult;
+
+// fn function1() -> Result {
+// --snip--
+// }
+
+// fn function2() -> IoResult<()> {
+// --snip--
+// }
 
 pub fn eat_at_restaurant_old() {
     // Absolute path
