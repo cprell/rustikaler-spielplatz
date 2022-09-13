@@ -9,19 +9,13 @@
 // also possible
 // global operator
 // use std::collections::*;
-mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
-
-        fn test() {}
-    }
-}
+mod front_of_house;
 
 // this is done instead of ::hosting::add_to_waitlist, so you know where the function is defined
-use crate::front_of_house::hosting;
+// use crate::front_of_house::hosting;
 
 // alternative: this is called re-exporting. makes things public
-// pub use crate::front_of_house::hosting;
+pub use crate::front_of_house::hosting;
 
 pub fn eat_at_restaurant2() {
     hosting::add_to_waitlist();
