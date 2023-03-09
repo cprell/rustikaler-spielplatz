@@ -75,4 +75,59 @@ fn main() {
         let v = vec![1, 2, 3];
     }
     // out of scope again
+
+    // Strings
+
+    let mut s = String::new();
+
+    // initialize string with value
+
+    let data = "initial contents";
+
+    let s = data.to_string();
+
+    let s = "initial contents".to_string();
+
+    let s = String::from("initial contents");
+
+    // utf-8
+    let mut hello = String::from("你好");
+
+    // push_str takes a string slice because we don't necessarily want to take ownership of the parameter
+    hello.push_str("beep, boop");
+
+    hello.push('!');
+
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
+
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+
+    // since this is a macro call - no ownership
+    let s = format!("{}-{}-{}", s1, s2, s3);
+
+    // Indexing into Strings
+
+    // str[0] does not work due to how data is saved internally
+
+    let hello = "Здравствуйте";
+
+    let s = &hello[0..4];
+
+    // this works, but if you do &hello[0..1] (less than one char) the program will crash at runtime
+
+    // better:
+    for c in "Зд".chars() {
+        println!("{}", c);
+    }
+
+    // or
+    for b in "Зд".bytes() {
+        println!("{}", b);
+    }
+
+    // Hash maps
 }
